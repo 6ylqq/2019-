@@ -73,8 +73,6 @@ type Value struct {
 	Length []int
 }
 
-const MAXWIGHT int =1000
-
 func main(){
 
 	people = append(people, Person{ID: "1", Firstname: "yang", Lastname: "zedong", Address: &Address{City: "Chengdu", Province: "Sichuan"}})
@@ -98,9 +96,10 @@ func main(){
 	fmt.Println("The loadcoal host has been created!")
 	fmt.Println("You can view some info on: http://localhost:9899/people or http://localhost:9899/people/{id}")
 
+	http.ListenAndServe(":9899", router)//启动API响应操作，由于没整好验证，所以想要验证下面的功能要把这个注释掉
 	//使用JWT Token/SSL HTTPS安全机制验证用户是否正确，确保可以进如系统
 
-	//（时间原因，还在理解这两个的机制，大概意思应该是密码的解密加密问题，然后套上Redis作为缓存
+	//（时间原因，还在理解这两个的机制，大概意思应该是密码的解密加密问题，然后套上Redis作为缓存，验证成功后就可以进行下一步操作
 
 
 	//导入csv文件
